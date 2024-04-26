@@ -23,7 +23,24 @@ public class AppRunner {
                 new Mars(ActionLetter.F, 80),
                 new Pistachios(ActionLetter.G, 130)
         });
-        moneyAcceptor = new CoinAcceptor(100);
+        moneyAcceptor = choice();
+    }
+
+    public MoneyReceivable choice(){
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Выберите способ оплаты: ");
+        System.out.println("1 - Картой");
+        System.out.println("2 - Монетами");
+        int choice = sc.nextInt();
+        if(choice == 1){
+            System.out.print("Введите номер карты: ");
+            int cardNumber = sc.nextInt();
+            System.out.print("Введите одноразовый пароль: ");
+            String password = sc.nextLine();
+            return new CardAcceptor(100, cardNumber, password);
+        }else{
+            return new CoinAcceptor(100);
+        }
     }
 
     public static void run() {
