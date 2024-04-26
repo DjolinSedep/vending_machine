@@ -28,13 +28,14 @@ public class AppRunner {
 
     public MoneyReceivable choice(){
         Scanner sc = new Scanner(System.in);
-        System.out.print("Выберите способ оплаты: ");
+        System.out.println("Выберите способ оплаты: ");
         System.out.println("1 - Картой");
         System.out.println("2 - Монетами");
         int choice = sc.nextInt();
         if(choice == 1){
             System.out.print("Введите номер карты: ");
             int cardNumber = sc.nextInt();
+            sc.nextLine();
             System.out.print("Введите одноразовый пароль: ");
             String password = sc.nextLine();
             return new CardAcceptor(100, cardNumber, password);
@@ -73,9 +74,15 @@ public class AppRunner {
     }
 
     private void chooseAction(UniversalArray<Product> products) {
+        print(" a - пополнить баланс");
         showActions(products);
         print(" h - Выйти");
         String action = fromConsole().substring(0, 1);
+        if ("a".equalsIgnoreCase(action)) {
+            moneyAcceptor.setAmount(moneyAcceptor.getAmount() + 10);
+            print("Вы пополнили баланс на 10");
+            return;
+        }
         try {
             for (int i = 0; i < products.size(); i++) {
                 if (products.get(i).getActionLetter().equals(ActionLetter.valueOf(action.toUpperCase()))) {
