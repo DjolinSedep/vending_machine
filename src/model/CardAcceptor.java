@@ -1,6 +1,8 @@
 package model;
 
-public class CardAcceptor {
+import interfaces.MoneyReceivable;
+
+public class CardAcceptor implements MoneyReceivable {
     private int amount;
     private int cardNumber;
     private String password;
