@@ -2,6 +2,8 @@ package model;
 
 public class CardAcceptor {
     private int amount;
+    private int cardNumber;
+    private String password;
 
     public CardAcceptor(int amount) {
         this.amount = amount;
