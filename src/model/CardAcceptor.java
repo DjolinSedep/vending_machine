@@ -7,8 +7,10 @@ public class CardAcceptor implements MoneyReceivable {
     private int cardNumber;
     private String password;
 
-    public CardAcceptor(int amount) {
+    public CardAcceptor(int amount, int cardNumber, String password) {
         this.amount = amount;
+        this.cardNumber = cardNumber;
+        this.password = password;
     }
 
     public int getAmount() {
